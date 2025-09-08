@@ -18,14 +18,28 @@ jobs:
       with:
         node-version: '22'
         cache: 'npm'
+        cache-dependency-path: 'package-lock.json'
         
     - name: Install dependencies
-      run: npm install
+      run: |
+        echo "📦 Installing dependencies..."
+        npm ci --prefer-offline --no-audit
+        echo "✅ Dependencies installed successfully"
 
     - name: Build application
-      run: npm run build
+      run: |
+        echo "🔨 Building application..."
+        npm run build
+        echo "✅ Build completed successfully"
       env:
         NODE_OPTIONS: --max-old-space-size=4096
+        
+    - name: Verify build output
+      run: |
+        echo "🔍 Verifying build output..."
+        ls -la dist/
+        echo "📊 Build statistics:"
+        du -sh dist/*
         
     - name: Deploy to Vercel (Production)
       if: (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master') && secrets.VERCEL_TOKEN != ''
