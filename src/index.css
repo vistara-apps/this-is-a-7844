@@ -44,4 +44,22 @@
   .textarea {
     @apply bg-bg border border-gray-600 rounded-lg px-4 py-3 text-text-primary placeholder-text-secondary focus:border-primary focus:outline-none transition-colors duration-150 resize-none;
   }
+  
+  .btn-destructive {
+    @apply bg-destructive text-white px-6 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity duration-150;
+  }
+  
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
 }
